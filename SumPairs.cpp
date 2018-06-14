@@ -1,33 +1,26 @@
 #include<iostream>
 using namespace std;
 int main() {
-    int limit,Arr[100],Num,Res1=0,Res2=0;
+    int limit,Arr[100],Max = 0,Num,Res1=0,Res2=0;
     cin>>limit;
-    if(limit<=15){
-       for(int i = 1;i<=limit;i++){
+    
+       for(int i = 0;i<limit;i++){
             cin>>Arr[i];
+	    if(Arr[i]<0){
+	    	Max = -100;
+	    }
         }
-    }
-    else
-        cout<<"0";
     
-    cin>>Num;
-    
-    for(int i = 1 ;i<=limit;i++){
+    for(int i = 0 ;i<limit;i++){
         for(int j = i+1;j<limit;j++){
-            if(Arr[i] + Arr[j] + Arr[j+1] + Arr[j+2] == Num){
-                    cout<<Arr[i]<<"\t"<<Arr[j]<<"\t" <<Arr[j+1]<<"\t"<<Arr[j+2]<<endl;
-            }
-           else  if(Arr[i] + Arr[j] + Arr[j+1] == Num){
-                    cout<<Arr[i]<<"\t"<<Arr[j]<<"\t" <<Arr[j+1]<<endl;
-            }
-            else if(Arr[i]+ Arr[j]==Num){
-                Res1 = Arr[i];
-                Res2 = Arr[j];
-                cout<<Res1<<"\t"<<Res2<<endl;
-            }
+            if(Arr[i]+Arr[j]>Max){
+	    	Max = Arr[i] + Arr[j];
+		Res1 = Arr[i];
+		Res2 = Arr[j];
+	    }
           
         }
     }
+     cout<<"The max pairs are"<<Res1<<" and "<<Res2;
 	return 0;
 }
